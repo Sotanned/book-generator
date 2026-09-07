@@ -189,8 +189,13 @@ The answer is not to build a review process I will abandon. It is two rules:
   marker.** The marker is a blockquote, so it is greppable and renders visibly:
 
   ```markdown
-  > [!WARNING] Unverified: no source found for `maxFilesPerTrigger` default value.
+  !!! warning "Unverified"
+      No source found for the default value of `maxFilesPerTrigger`.
   ```
+
+  This is MkDocs Material admonition syntax rather than GitHub alert syntax,
+  because the site is the reading surface and Material does not render
+  `> [!WARNING]`. It stays greppable via the literal `!!! warning "Unverified"`.
 
   I read past it or I check it. No ledger, no gate, no merge ceremony.
 
