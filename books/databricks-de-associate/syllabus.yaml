@@ -1,0 +1,391 @@
+book_id: databricks-de-associate
+title: "TBD - named in Task 7"
+world: world/bible.md
+exam:
+  name: "Databricks Certified Data Engineer Associate"
+  guide_version: "2025-07-25"  # PROVISIONAL - not confirmed on the document itself, ask user to verify against the printed revision date
+  questions: 45
+  duration_minutes: 90
+  pass_mark: 0.70  # PROVISIONAL - not stated in the transcribed guide content, placeholder value
+
+domains:
+  - id: D1
+    name: "Databricks Intelligence Platform"
+    weight: 0.06
+    chapters:
+      - id: "001"
+        slug: platform-architecture-delta-unity-catalog
+        title: "Platform Architecture, Delta Lake, and Unity Catalog"
+        topics:
+          - "core components of the Databricks Data Intelligence Platform"
+          - "architecture, Delta Lake, and Unity Catalog fundamentals"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "002"
+        slug: compute-services-selection
+        title: "Compute Services Selection"
+        topics:
+          - "Databricks compute services: characteristics, limitations, and cost models"
+          - "selecting the most suitable compute option per workload use case"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D2
+    name: "Data Ingestion and Loading"
+    weight: 0.21
+    chapters:
+      - id: "003"
+        slug: batch-streaming-incremental-ingestion-patterns
+        title: "Batch, Streaming, and Incremental Ingestion Patterns"
+        topics:
+          - "data ingestion patterns: batch, streaming, and incremental loading"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "004"
+        slug: local-files-lakeflow-connect-import
+        title: "Importing from Local Files and Lakeflow Connect"
+        topics:
+          - "importing data from local files"
+          - "Lakeflow Connect standard connectors and managed connectors"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "005"
+        slug: copy-into-command
+        title: "The COPY INTO Command"
+        topics:
+          - "using COPY INTO to incrementally load files from cloud object storage (ADLS/S3/GCS)"
+          - "landing data into Unity-Catalog-governed tables with COPY INTO"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "006"
+        slug: auto-loader-schema-enforcement-evolution
+        title: "Auto Loader: Schema Enforcement and Evolution"
+        topics:
+          - "Auto Loader with schema enforcement and schema evolution"
+          - "batch modes: directory listing and file notification"
+          - "landing data into Unity Catalog-governed tables with Auto Loader"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "007"
+        slug: lakeflow-connect-enterprise-sources
+        title: "Configuring Lakeflow Connect for Enterprise Sources"
+        topics:
+          - "configuring Lakeflow Connect to reliably ingest data from diverse enterprise sources"
+          - "landing data into Unity Catalog-governed tables via Lakeflow Connect"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "008"
+        slug: jdbc-odbc-rest-ingestion-orchestration
+        title: "JDBC/ODBC and REST Ingestion Orchestrated with Lakeflow Jobs"
+        topics:
+          - "using JDBC/ODBC or REST clients in notebooks to land data"
+          - "orchestrating and scheduling such ingestion with Lakeflow Jobs"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "009"
+        slug: ingestion-method-selection
+        title: "Choosing the Right Ingestion Method"
+        topics:
+          - "prioritizing between Auto Loader, Lakeflow Connect (standard/managed), partner connectors, and other ingestion methods"
+          - "technical requirements: data volume, ingestion frequency, data types, and governance needs with Unity Catalog"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "010"
+        slug: semi-structured-unstructured-ingestion
+        title: "Ingesting Semi-Structured and Unstructured Data"
+        topics:
+          - "ingesting semi-structured and unstructured data (for example, JSON and nested data)"
+          - "via Lakeflow Connect and other managed connectors into Unity Catalog-governed Delta tables"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D3
+    name: "Data Transformation and Modeling"
+    weight: 0.22
+    chapters:
+      - id: "011"
+        slug: bronze-to-silver-cleaning
+        title: "Cleaning Bronze Tables into Silver"
+        topics:
+          - "reading bronze tables with PySpark/SQL"
+          - "cleaning nulls and standardizing data types"
+          - "writing cleaned data to new silver tables"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "012"
+        slug: dataframe-joins
+        title: "Combining DataFrames with Joins"
+        topics:
+          - "inner join, left join, broadcast join"
+          - "joins on multiple keys, cross join"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "013"
+        slug: union-and-union-all
+        title: "Union and Union All Operations"
+        topics:
+          - "combining DataFrames with union and union all"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "014"
+        slug: column-row-table-manipulation
+        title: "Manipulating Columns, Rows, and Table Structures"
+        topics:
+          - "adding, dropping, splitting, and renaming columns"
+          - "applying filters and exploding arrays"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "015"
+        slug: deduplication-operations
+        title: "Data Deduplication Operations"
+        topics:
+          - "performing data deduplication operations on DataFrames"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "016"
+        slug: aggregate-operations
+        title: "Aggregate Operations on DataFrames"
+        topics:
+          - "count, approximate count distinct, mean, and summary aggregations"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "017"
+        slug: spark-performance-tuning-parameters
+        title: "Basic Spark Performance Tuning Parameters"
+        topics:
+          - "spark.sql.shuffle.partitions, spark.default.parallelism"
+          - "spark.executor/driver.memory, spark.sql.autoBroadcastJoinThreshold"
+          - "re-measuring performance after tuning"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "018"
+        slug: gold-layer-objects
+        title: "Building Gold Layer Objects"
+        topics:
+          - "materialized views, views, streaming tables, and tables in Unity Catalog"
+          - "differences between Gold layer object types for BI and analytics teams"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "019"
+        slug: silver-gold-data-quality-checks
+        title: "Data Quality Checks for Silver and Gold"
+        topics:
+          - "applying data quality checks and validation rules"
+          - "ensuring reliable Silver and Gold datasets"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D4
+    name: "Working with Lakeflow Jobs"
+    weight: 0.16
+    chapters:
+      - id: "020"
+        slug: job-retries
+        title: "Retries in Lakeflow Jobs"
+        topics:
+          - "implementing retries as part of control flow in Lakeflow Jobs"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "021"
+        slug: conditional-tasks-branching-looping
+        title: "Conditional Tasks: Branching and Looping"
+        topics:
+          - "implementing conditional tasks such as branching and looping"
+          - "control flows for pipeline orchestration with Lakeflow Jobs"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "022"
+        slug: common-task-types-configuration
+        title: "Configuring Common Task Types"
+        topics:
+          - "notebook, SQL query, dashboard, and pipeline tasks"
+          - "configuring these common tasks in Lakeflow Jobs"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "023"
+        slug: dag-task-dependencies
+        title: "DAG-Based Task Dependencies"
+        topics:
+          - "configuring task dependencies using Lakeflow Jobs' DAG-based task graph"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "024"
+        slug: job-schedules-trigger-types
+        title: "Job Schedules and Trigger Types"
+        topics:
+          - "implementing job schedules using Lakeflow Jobs"
+          - "trigger types: scheduled, file arrival, and table update"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "025"
+        slug: time-based-vs-data-driven-triggers
+        title: "Time-Based vs. Data-Driven Triggers"
+        topics:
+          - "choosing between time-based and data-driven triggers"
+          - "based on data availability and pipeline dependencies"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D5
+    name: "Implementing CI/CD"
+    weight: 0.10
+    chapters:
+      - id: "026"
+        slug: databricks-git-folders-workflow
+        title: "Code Development Workflow with Databricks Git Folders"
+        topics:
+          - "creating and switching branches in Databricks Git Folders (formerly Databricks Repos)"
+          - "committing, pushing changes, and creating pull requests via Databricks Git integration"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "027"
+        slug: automation-bundle-environment-config
+        title: "Environment-Specific Configuration with Automation Bundles"
+        topics:
+          - "Automation Bundle (formerly Databricks Asset Bundles) variables and overrides"
+          - "promoting the same codebase across dev, test, and prod targets"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "028"
+        slug: automation-bundle-deployment
+        title: "Deploying Declarative Automation Bundles"
+        topics:
+          - "packaging, configuring, and promoting Lakeflow Jobs and Lakeflow Spark Declarative Pipelines"
+          - "deploying other workspace assets across dev, test, and prod environments"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "029"
+        slug: databricks-cli-bundle-management
+        title: "Managing Bundles with the Databricks CLI"
+        topics:
+          - "using the Databricks CLI to validate, deploy, and manage Declarative Automation Bundles"
+          - "managing other workspace assets in automated CI/CD workflows"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D6
+    name: "Troubleshooting, Monitoring, and Optimization"
+    weight: 0.10
+    chapters:
+      - id: "030"
+        slug: job-performance-monitoring
+        title: "Monitoring Job Performance and Pipeline Health"
+        topics:
+          - "identifying job performance trends via the Lakeflow Jobs run history view"
+          - "monitoring pipeline health: job statuses, DAG-based task graphs, run times, and failure rates"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "031"
+        slug: spark-ui-performance-bottlenecks
+        title: "Diagnosing Bottlenecks in the Spark UI"
+        topics:
+          - "identifying data skew, shuffling, and disk spilling"
+          - "interpreting stage-level metrics in the Spark UI"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "032"
+        slug: liquid-clustering-predictive-optimization
+        title: "Liquid Clustering and Predictive Optimization"
+        topics:
+          - "features of Liquid Clustering"
+          - "predictive optimization"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "033"
+        slug: cluster-failure-diagnostics
+        title: "Diagnosing Cluster and Library Failures"
+        topics:
+          - "diagnosing cluster startup failures"
+          - "library conflicts and out-of-memory issues"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+
+  - id: D7
+    name: "Governance and Security"
+    weight: 0.15
+    chapters:
+      - id: "034"
+        slug: managed-vs-external-tables
+        title: "Managed vs. External Tables in Unity Catalog"
+        topics:
+          - "differentiating between managed and external tables in Unity Catalog"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "035"
+        slug: table-operations-lifecycle
+        title: "Table Lifecycle Operations"
+        topics:
+          - "creating, modifying, and deleting tables"
+          - "converting between managed and external tables"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "036"
+        slug: grant-revoke-access-control
+        title: "Access Control with GRANT and REVOKE"
+        topics:
+          - "configuring access controls using the UI and SQL"
+          - "applying GRANT and REVOKE privileges to principals (users, groups, service principals)"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "037"
+        slug: deny-privileges-security-hierarchy
+        title: "DENY Privileges and the Security Hierarchy"
+        topics:
+          - "applying DENY privileges to principals"
+          - "appropriate levels of the security hierarchy"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "038"
+        slug: column-row-level-security
+        title: "Column-Level Masking and Row-Level Security"
+        topics:
+          - "column-level masking and row-level security"
+          - "restricting data visibility based on user groups"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
+      - id: "039"
+        slug: unity-catalog-abac-policies
+        title: "Unity Catalog ABAC Policies"
+        topics:
+          - "ABAC policies to centrally control row-level filtering and column masking for sensitive data"
+        sources:
+          - sources/exam-guide.md
+        status: unwritten
