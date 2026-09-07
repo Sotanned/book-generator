@@ -236,7 +236,9 @@ Pages from the repo with no build shims.
 The pipeline is a nightly unattended job writing to a git repo, so failures must be
 loud and must never corrupt state.
 
-- **No unwritten chapters left.** Exit zero with a message. Not an error.
+- **No unwritten chapters left.** A distinct exit code with a message, so the
+  caller can tell "book finished" apart from "manifest produced" without parsing
+  output. The pipeline treats it as success, not failure.
 - **A listed source file is missing.** Abort before generating. Writing an
   ungrounded chapter is worse than writing none.
 - **Validation fails after generation.** Leave the chapter file on disk, leave
