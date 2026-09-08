@@ -10,9 +10,10 @@ The generator appends a row when it introduces a genuinely new concept.
 | Concept | Story element | First appears |
 |---|---|---|
 | Unity Catalog | The Register | 001 |
-| metastore | The Vault | 001 |
-| catalog | The Ledger | 001 |
-| schema | The Leaf | 001 |
+| metastore | The Foundation | 001 |
+| catalog | The Vault | 001 |
+| schema | The Ledger | 001 |
+| table | The Leaf | 001 |
 | Delta Lake | The Standing Ledger | 001 |
 | time travel | Walking the record back | 001 |
 | compute | Draughts | 002 |
@@ -31,3 +32,5 @@ The generator appends a row when it introduces a genuinely new concept.
 | row-level security | What a hand is permitted to see | 038 |
 | Databricks Git Folders | Working copies | 026 |
 | Automation Bundles | Sealed carriage | 028 |
+| ACID transaction | The settlement seal | 001 |
+| data lineage | The chain of hands | 001 |

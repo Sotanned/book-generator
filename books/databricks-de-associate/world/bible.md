@@ -152,9 +152,12 @@ genuinely cannot be done.
    appends a new state; the prior state remains and can be walked back to.
    This is why the Register is trusted: not because it is never wrong, but
    because being wrong is always recoverable and always visible.
-3. **A record's name has three parts, always.** Vault, ledger, leaf. Speaking
-   only the leaf is how apprentices lose things — two vaults may both hold a
-   ledger holding a leaf called *tolls*, and they are not the same *tolls*.
+3. **A record's name has three parts, always.** Vault, ledger, leaf — the leaf
+   being the record itself. Speaking only the leaf is how apprentices lose
+   things: one vault may hold two ledgers each holding a leaf called *tolls*,
+   and they are not the same *tolls*. Above the vaults sits the Foundation,
+   the authority a station's whole vault-set is held under; it is not spoken
+   as part of a name because within a station it is never in question.
 4. **Custody has stages, and none may be skipped.** What arrives is raw and
    untrustworthy and is kept exactly as it arrived. It is then settled —
    cleaned, typed, deduplicated. Only settled material may be made into a fair

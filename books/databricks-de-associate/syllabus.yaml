@@ -21,7 +21,7 @@ domains:
     - "architecture, Delta Lake, and Unity Catalog fundamentals"
     sources:
     - sources/exam-guide.md
-    status: unwritten
+    status: drafted
   - id: "002"
     slug: what-a-draught-costs
     title: "What a Draught Costs"
