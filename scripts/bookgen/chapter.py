@@ -16,9 +16,10 @@ MAX_MCQS = 5
 UNVERIFIED_MARKER = '!!! warning "Unverified"'
 
 _FRONT_MATTER = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
-_FENCED = re.compile(r"^```.*?^```", re.DOTALL | re.MULTILINE)
+_FENCED = re.compile(r"^(```|~~~).*?^\1", re.DOTALL | re.MULTILINE)
 _MERMAID = re.compile(r"^```mermaid\r?\n(.*?)^```", re.DOTALL | re.MULTILINE)
 _ANSWER = re.compile(r"<summary>\s*Answer\s*</summary>", re.IGNORECASE)
+_QUESTION = re.compile(r"^\*\*\d+\.\*\*", re.MULTILINE)
 
 _yaml = YAML(typ="safe")
 
@@ -36,6 +37,10 @@ class Chapter:
     @cached_property
     def mcq_count(self) -> int:
         return len(_ANSWER.findall(self.body))
+
+    @cached_property
+    def question_count(self) -> int:
+        return len(_QUESTION.findall(self.body))
 
     @cached_property
     def mermaid_blocks(self) -> list[str]:

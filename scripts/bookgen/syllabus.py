@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -97,7 +99,16 @@ def set_status(path: Path, chapter_id: str, status: str) -> None:
         for chapter in domain.get("chapters", []):
             if str(chapter["id"]) == chapter_id:
                 chapter["status"] = status
-                with path.open("w", encoding="utf-8", newline="\n") as fh:
-                    _yaml.dump(raw, fh)
+                fd, tmp_name = tempfile.mkstemp(
+                    dir=path.parent, prefix=f".{path.name}.", suffix=".tmp"
+                )
+                tmp_path = Path(tmp_name)
+                try:
+                    with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
+                        _yaml.dump(raw, fh)
+                    os.replace(tmp_path, path)
+                except BaseException:
+                    tmp_path.unlink(missing_ok=True)
+                    raise
                 return
     raise KeyError(f"no chapter with id {chapter_id!r} in {path}")

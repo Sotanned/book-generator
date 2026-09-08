@@ -32,9 +32,28 @@ def test_word_count_ignores_fenced_code(book_dir):
     assert without == with_code
 
 
+def test_word_count_ignores_tilde_fenced_code(book_dir):
+    base = build_chapter(words=2400, mermaid="")
+    without = parse_chapter(write(book_dir, base, name="a.md")).word_count
+    tilde_block = "\n~~~python\n" + " ".join(["word"] * 500) + "\n~~~\n"
+    with_code = parse_chapter(write(book_dir, base + tilde_block, name="b.md")).word_count
+    assert without == with_code
+
+
 def test_counts_mcqs(book_dir):
     ch = parse_chapter(write(book_dir, build_chapter(mcqs=5)))
     assert ch.mcq_count == 5
+
+
+def test_counts_questions(book_dir):
+    ch = parse_chapter(write(book_dir, build_chapter(mcqs=4)))
+    assert ch.question_count == 4
+
+
+def test_question_and_answer_counts_can_disagree(book_dir):
+    ch = parse_chapter(write(book_dir, build_chapter(mcqs=4, answers=3)))
+    assert ch.question_count == 4
+    assert ch.mcq_count == 3
 
 
 def test_collects_mermaid_blocks(book_dir):

@@ -50,6 +50,19 @@ def _check_written_chapter(book_dir: Path, entry: ChapterEntry) -> list[Finding]
         findings.append(
             Finding(where, f"front matter domain {chapter.meta.get('domain')!r} != syllabus {entry.domain_id!r}")
         )
+    if str(chapter.meta.get("title")) != entry.title:
+        findings.append(
+            Finding(where, f"front matter title {chapter.meta.get('title')!r} != syllabus {entry.title!r}")
+        )
+    if str(chapter.meta.get("status")) != entry.status:
+        findings.append(
+            Finding(where, f"front matter status {chapter.meta.get('status')!r} != syllabus {entry.status!r}")
+        )
+    for source in chapter.meta.get("sources") or []:
+        if not (book_dir / source).exists():
+            findings.append(
+                Finding(where, f"front matter lists a missing source: {source}")
+            )
     if not MIN_WORDS <= chapter.word_count <= MAX_WORDS:
         findings.append(
             Finding(where, f"word count {chapter.word_count} outside {MIN_WORDS}-{MAX_WORDS}")
@@ -58,13 +71,31 @@ def _check_written_chapter(book_dir: Path, entry: ChapterEntry) -> list[Finding]
         findings.append(
             Finding(where, f"MCQ count {chapter.mcq_count} outside {MIN_MCQS}-{MAX_MCQS}")
         )
+    if chapter.question_count != chapter.mcq_count:
+        findings.append(
+            Finding(
+                where,
+                f"question count {chapter.question_count} != answer count {chapter.mcq_count}",
+            )
+        )
     for block in chapter.mermaid_blocks:
-        first_token = block.split()[0] if block.split() else ""
+        first_token = _mermaid_type_token(block)
         if first_token not in MERMAID_TYPES:
             findings.append(
                 Finding(where, f"mermaid block declares unknown diagram type {first_token!r}")
             )
     return findings
+
+
+def _mermaid_type_token(block: str) -> str:
+    """Return the diagram-type token, skipping leading blank lines and %%-directives."""
+    for line in block.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("%%"):
+            continue
+        tokens = stripped.split()
+        return tokens[0] if tokens else ""
+    return ""
 
 
 def check_book(book_dir: Path) -> list[Finding]:

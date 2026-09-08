@@ -52,3 +52,30 @@ def test_set_status_rejects_unknown_status(book_dir):
 def test_set_status_rejects_unknown_chapter(book_dir):
     with pytest.raises(KeyError, match="999"):
         set_status(book_dir / "syllabus.yaml", "999", "drafted")
+
+
+def test_set_status_leaves_no_temp_file_behind(book_dir):
+    path = book_dir / "syllabus.yaml"
+    set_status(path, "002", "drafted")
+    leftovers = list(path.parent.glob(f".{path.name}.*.tmp"))
+    assert leftovers == []
+
+
+def test_set_status_writes_via_atomic_replace(book_dir, monkeypatch):
+    """A failure during dump must never leave a truncated syllabus.yaml."""
+    path = book_dir / "syllabus.yaml"
+    original = path.read_text(encoding="utf-8")
+
+    import bookgen.syllabus as syllabus_mod
+
+    def boom(*args, **kwargs):
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(syllabus_mod._yaml, "dump", boom)
+
+    with pytest.raises(RuntimeError, match="boom"):
+        set_status(path, "002", "drafted")
+
+    # the original file must be untouched, and no temp file left behind
+    assert path.read_text(encoding="utf-8") == original
+    assert list(path.parent.glob(f".{path.name}.*.tmp")) == []

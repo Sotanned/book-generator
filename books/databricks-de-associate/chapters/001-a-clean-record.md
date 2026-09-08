@@ -148,10 +148,10 @@ flowchart TD
 > | Walking the record back | time travel | Reading or restoring a state that has been superseded |
 >
 > **Core components.** The Databricks Data Intelligence Platform is understood
-> through its architecture, **Delta Lake**, and **Unity Catalog**. Those three are
-> the answer to "what is this thing made of." Storage format and governance are
-> not accessories bolted onto a compute engine; they are named components of the
-> platform itself.
+> through components such as its architecture, **Delta Lake**, and **Unity
+> Catalog**. The outline names these three among the answer to "what is this
+> thing made of." Storage format and governance are not accessories bolted onto
+> a compute engine; they are named components of the platform itself.
 >
 > **Delta Lake — what a standing ledger gives you.**
 > - **ACID transactions.** A write takes whole or not at all. No half-written
@@ -196,7 +196,7 @@ flowchart TD
 
 <details><summary>Answer</summary>
 
-B. Because the exam outline names the core components as the platform's architecture, Delta Lake, and Unity Catalog. A and C are features and infrastructure details rather than core components, and D is a data-modelling convention layered on top of the platform, not the platform itself.
+B. Because the exam outline names these three among the platform's core components: its architecture, Delta Lake, and Unity Catalog. A and C are features and infrastructure details rather than core components, and D is a data-modelling convention layered on top of the platform, not the platform itself.
 
 </details>
 

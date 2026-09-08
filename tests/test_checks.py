@@ -70,6 +70,49 @@ def test_unknown_mermaid_type_is_an_error(book_dir):
     assert "mermaid" in messages(check_book(book_dir))
 
 
+def test_mermaid_init_directive_is_allowed(book_dir):
+    from bookgen.syllabus import set_status
+
+    set_status(book_dir / "syllabus.yaml", "002", "drafted")
+    write_ch2(
+        book_dir,
+        mermaid="%%{init: {'theme': 'dark'}}%%\nflowchart TD\n  A --> B",
+    )
+    assert check_book(book_dir) == []
+
+
+def test_front_matter_title_must_match_syllabus(book_dir):
+    from bookgen.syllabus import set_status
+
+    set_status(book_dir / "syllabus.yaml", "002", "drafted")
+    write_ch2(book_dir, title="Not The Right Title")
+    assert "title" in messages(check_book(book_dir))
+
+
+def test_front_matter_status_must_match_syllabus(book_dir):
+    from bookgen.syllabus import set_status
+
+    set_status(book_dir / "syllabus.yaml", "002", "drafted")
+    write_ch2(book_dir, status="approved")
+    assert "status" in messages(check_book(book_dir))
+
+
+def test_front_matter_missing_source_is_an_error(book_dir):
+    from bookgen.syllabus import set_status
+
+    set_status(book_dir / "syllabus.yaml", "002", "drafted")
+    write_ch2(book_dir, sources=("sources/does-not-exist.md",))
+    assert "front matter lists a missing source" in messages(check_book(book_dir))
+
+
+def test_question_answer_mismatch_is_an_error(book_dir):
+    from bookgen.syllabus import set_status
+
+    set_status(book_dir / "syllabus.yaml", "002", "drafted")
+    write_ch2(book_dir, mcqs=4, answers=3)
+    assert "question count" in messages(check_book(book_dir))
+
+
 def test_missing_source_file_is_an_error(book_dir):
     (book_dir / "sources" / "guide.md").unlink()
     assert "missing source" in messages(check_book(book_dir))

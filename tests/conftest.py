@@ -53,6 +53,7 @@ def build_chapter(
     status="drafted",
     words=2400,
     mcqs=4,
+    answers=None,
     mermaid="flowchart TD\n  A --> B",
 ) -> str:
     """Build chapter file text. Defaults produce a chapter that passes every check."""
@@ -69,10 +70,12 @@ def build_chapter(
         """)
     prose = " ".join(["word"] * words)
     diagram = f"\n```mermaid\n{mermaid}\n```\n" if mermaid else ""
+    if answers is None:
+        answers = mcqs
     questions = "".join(
-        f"\n**Q{i + 1}.** Question text?\n\n"
+        f"\n**{i + 1}.** Question text?\n\n"
         "- A. one\n- B. two\n- C. three\n- D. four\n\n"
-        "<details><summary>Answer</summary>\n\nB. two\n\n</details>\n"
+        + ("<details><summary>Answer</summary>\n\nB. two\n\n</details>\n" if i < answers else "")
         for i in range(mcqs)
     )
     return f"{front}\n{prose}\n{diagram}{questions}"

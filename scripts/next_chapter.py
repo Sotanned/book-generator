@@ -2,7 +2,9 @@
 
 Usage:
     python scripts/next_chapter.py databricks-de-associate
-Prints a JSON manifest. Exits 2 when the book is finished, 3 on a missing source.
+Prints a JSON manifest. Exits 2 when the book is finished, 3 on a missing source,
+64 on a wrong argument count, and 1 (with a traceback-free message on stderr) on
+any other error, including a malformed syllabus.yaml.
 """
 
 from __future__ import annotations
@@ -20,13 +22,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 BOOKS_DIR = REPO_ROOT / "books"
 
 
+class BookFinished(Exception):
+    """Raised when a syllabus has no unwritten chapters left."""
+
+
 def build_manifest(book_dir: Path) -> dict:
     book_dir = Path(book_dir)
     syllabus = load_syllabus(book_dir / "syllabus.yaml")
 
     entry = syllabus.next_unwritten()
     if entry is None:
-        raise LookupError(f"no unwritten chapters left in {syllabus.book_id}")
+        raise BookFinished(f"no unwritten chapters left in {syllabus.book_id}")
 
     for source in entry.sources:
         if not (book_dir / source).exists():
@@ -76,12 +82,15 @@ def main(argv: list[str]) -> int:
         return 64
     try:
         manifest = build_manifest(BOOKS_DIR / argv[0])
-    except LookupError as exc:
+    except BookFinished as exc:
         print(str(exc), file=sys.stderr)
         return 2
     except FileNotFoundError as exc:
         print(str(exc), file=sys.stderr)
         return 3
+    except Exception as exc:  # noqa: BLE001 - a broken syllabus must be loud, never silent
+        print(f"syllabus error: {exc!r}", file=sys.stderr)
+        return 1
     print(json.dumps(manifest, indent=2))
     return 0
 
