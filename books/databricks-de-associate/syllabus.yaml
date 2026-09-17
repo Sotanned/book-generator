@@ -1,0 +1,403 @@
+book_id: databricks-de-associate
+title: "A Clean Record"
+world: world/bible.md
+exam:
+  name: "Databricks Certified Data Engineer Associate"
+  guide_version: "2025-07-25"  # PROVISIONAL - not confirmed on the document itself, ask user to verify against the printed revision date
+  questions: 45
+  duration_minutes: 90
+  pass_mark: 0.70  # PROVISIONAL - not stated in the transcribed guide content, placeholder value
+
+domains:
+- id: D1
+  name: "Databricks Intelligence Platform"
+  weight: 0.06
+  chapters:
+  - id: "001"
+    slug: a-clean-record
+    title: "A Clean Record"
+    topics:
+    - "core components of the Databricks Data Intelligence Platform"
+    - "architecture, Delta Lake, and Unity Catalog fundamentals"
+    sources:
+    - sources/exam-guide.md
+    status: drafted
+  - id: "002"
+    slug: what-a-draught-costs
+    title: "What a Draught Costs"
+    topics:
+    - "Databricks compute services: characteristics, limitations, and cost models"
+    - "selecting the most suitable compute option per workload use case"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D2
+  name: "Data Ingestion and Loading"
+  weight: 0.21
+  chapters:
+  - id: "003"
+    slug: three-ways-a-thing-arrives
+    title: "Three Ways a Thing Arrives"
+    topics:
+    - "data ingestion patterns: batch, streaming, and incremental loading"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "004"
+    slug: hand-carried
+    title: "Hand-Carried"
+    topics:
+    - "importing data from local files"
+    - "Lakeflow Connect standard connectors and managed connectors"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "005"
+    slug: the-bulk-warrant
+    title: "The Bulk Warrant"
+    topics:
+    - "using COPY INTO to incrementally load files from cloud object storage (ADLS/S3/GCS)"
+    - "landing data into Unity-Catalog-governed tables with COPY INTO"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "006"
+    slug: the-watch-learns-a-new-shape
+    title: "The Watch Learns a New Shape"
+    topics:
+    - "Auto Loader with schema enforcement and schema evolution"
+    - "batch modes: directory listing and file notification"
+    - "landing data into Unity Catalog-governed tables with Auto Loader"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "007"
+    slug: factors-and-their-lines
+    title: "Factors and Their Lines"
+    topics:
+    - "configuring Lakeflow Connect to reliably ingest data from diverse enterprise
+      sources"
+    - "landing data into Unity Catalog-governed tables via Lakeflow Connect"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "008"
+    slug: the-long-reach
+    title: "The Long Reach"
+    topics:
+    - "using JDBC/ODBC or REST clients in notebooks to land data"
+    - "orchestrating and scheduling such ingestion with Lakeflow Jobs"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "009"
+    slug: which-road-for-which-cargo
+    title: "Which Road for Which Cargo"
+    topics:
+    - "prioritizing between Auto Loader, Lakeflow Connect (standard/managed), partner
+      connectors, and other ingestion methods"
+    - "technical requirements: data volume, ingestion frequency, data types, and governance
+      needs with Unity Catalog"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "010"
+    slug: things-that-do-not-fold-flat
+    title: "Things That Do Not Fold Flat"
+    topics:
+    - "ingesting semi-structured and unstructured data (for example, JSON and nested
+      data)"
+    - "via Lakeflow Connect and other managed connectors into Unity Catalog-governed
+      Delta tables"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D3
+  name: "Data Transformation and Modeling"
+  weight: 0.22
+  chapters:
+  - id: "011"
+    slug: settling
+    title: "Settling"
+    topics:
+    - "reading bronze tables with PySpark/SQL"
+    - "cleaning nulls and standardizing data types"
+    - "writing cleaned data to new silver tables"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "012"
+    slug: matching-hands
+    title: "Matching Hands"
+    topics:
+    - "inner join, left join, broadcast join"
+    - "joins on multiple keys, cross join"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "013"
+    slug: two-columns-one-account
+    title: "Two Columns, One Account"
+    topics:
+    - "combining DataFrames with union and union all"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "014"
+    slug: cutting-the-record-to-fit
+    title: "Cutting the Record to Fit"
+    topics:
+    - "adding, dropping, splitting, and renaming columns"
+    - "applying filters and exploding arrays"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "015"
+    slug: the-same-thing-twice
+    title: "The Same Thing Twice"
+    topics:
+    - "performing data deduplication operations on DataFrames"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "016"
+    slug: counting-without-reading-everything
+    title: "Counting Without Reading Everything"
+    topics:
+    - "count, approximate count distinct, mean, and summary aggregations"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "017"
+    slug: the-cost-of-a-crowded-floor
+    title: "The Cost of a Crowded Floor"
+    topics:
+    - "spark.sql.shuffle.partitions, spark.default.parallelism"
+    - "spark.executor/driver.memory, spark.sql.autoBroadcastJoinThreshold"
+    - "re-measuring performance after tuning"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "018"
+    slug: the-fair-copy
+    title: "The Fair Copy"
+    topics:
+    - "materialized views, views, streaming tables, and tables in Unity Catalog"
+    - "differences between Gold layer object types for BI and analytics teams"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "019"
+    slug: what-we-refuse-to-pass-on
+    title: "What We Refuse to Pass On"
+    topics:
+    - "applying data quality checks and validation rules"
+    - "ensuring reliable Silver and Gold datasets"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D4
+  name: "Working with Lakeflow Jobs"
+  weight: 0.16
+  chapters:
+  - id: "020"
+    slug: try-it-again-properly
+    title: "Try It Again, Properly"
+    topics:
+    - "implementing retries as part of control flow in Lakeflow Jobs"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "021"
+    slug: the-board-decides
+    title: "The Board Decides"
+    topics:
+    - "implementing conditional tasks such as branching and looping"
+    - "control flows for pipeline orchestration with Lakeflow Jobs"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "022"
+    slug: four-kinds-of-errand
+    title: "Four Kinds of Errand"
+    topics:
+    - "notebook, SQL query, dashboard, and pipeline tasks"
+    - "configuring these common tasks in Lakeflow Jobs"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "023"
+    slug: nothing-moves-before-its-cause
+    title: "Nothing Moves Before Its Cause"
+    topics:
+    - "configuring task dependencies using Lakeflow Jobs' DAG-based task graph"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "024"
+    slug: bells-arrivals-and-changes
+    title: "Bells, Arrivals, and Changes"
+    topics:
+    - "implementing job schedules using Lakeflow Jobs"
+    - "trigger types: scheduled, file arrival, and table update"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "025"
+    slug: the-clock-or-the-cargo
+    title: "The Clock or the Cargo"
+    topics:
+    - "choosing between time-based and data-driven triggers"
+    - "based on data availability and pipeline dependencies"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D5
+  name: "Implementing CI/CD"
+  weight: 0.10
+  chapters:
+  - id: "026"
+    slug: working-copies
+    title: "Working Copies"
+    topics:
+    - "creating and switching branches in Databricks Git Folders (formerly Databricks
+      Repos)"
+    - "committing, pushing changes, and creating pull requests via Databricks Git
+      integration"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "027"
+    slug: the-same-rite-in-three-houses
+    title: "The Same Rite in Three Houses"
+    topics:
+    - "Automation Bundle (formerly Databricks Asset Bundles) variables and overrides"
+    - "promoting the same codebase across dev, test, and prod targets"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "028"
+    slug: sealed-and-carried
+    title: "Sealed and Carried"
+    topics:
+    - "packaging, configuring, and promoting Lakeflow Jobs and Lakeflow Spark Declarative
+      Pipelines"
+    - "deploying other workspace assets across dev, test, and prod environments"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "029"
+    slug: the-quartermasters-instrument
+    title: "The Quartermaster's Instrument"
+    topics:
+    - "using the Databricks CLI to validate, deploy, and manage Declarative Automation
+      Bundles"
+    - "managing other workspace assets in automated CI/CD workflows"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D6
+  name: "Troubleshooting, Monitoring, and Optimization"
+  weight: 0.10
+  chapters:
+  - id: "030"
+    slug: the-watch-room-log
+    title: "The Watch-Room Log"
+    topics:
+    - "identifying job performance trends via the Lakeflow Jobs run history view"
+    - "monitoring pipeline health: job statuses, DAG-based task graphs, run times,
+      and failure rates"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "031"
+    slug: one-hand-doing-all-the-work
+    title: "One Hand Doing All the Work"
+    topics:
+    - "identifying data skew, shuffling, and disk spilling"
+    - "interpreting stage-level metrics in the Spark UI"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "032"
+    slug: where-things-are-kept
+    title: "Where Things Are Kept"
+    topics:
+    - "features of Liquid Clustering"
+    - "predictive optimization"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "033"
+    slug: why-the-engine-would-not-start
+    title: "Why the Engine Would Not Start"
+    topics:
+    - "diagnosing cluster startup failures"
+    - "library conflicts and out-of-memory issues"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+
+- id: D7
+  name: "Governance and Security"
+  weight: 0.15
+  chapters:
+  - id: "034"
+    slug: the-table-that-was-never-ours
+    title: "The Table That Was Never Ours"
+    topics:
+    - "differentiating between managed and external tables in Unity Catalog"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "035"
+    slug: made-altered-unmade
+    title: "Made, Altered, Unmade"
+    topics:
+    - "creating, modifying, and deleting tables"
+    - "converting between managed and external tables"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "036"
+    slug: who-may-touch-this
+    title: "Who May Touch This"
+    topics:
+    - "configuring access controls using the UI and SQL"
+    - "applying GRANT and REVOKE privileges to principals (users, groups, service
+      principals)"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "037"
+    slug: the-word-that-overrules
+    title: "The Word That Overrules"
+    topics:
+    - "applying DENY privileges to principals"
+    - "appropriate levels of the security hierarchy"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "038"
+    slug: what-the-clerk-may-not-see
+    title: "What the Clerk May Not See"
+    topics:
+    - "column-level masking and row-level security"
+    - "restricting data visibility based on user groups"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
+  - id: "039"
+    slug: a-rule-that-writes-itself-everywhere
+    title: "A Rule That Writes Itself Everywhere"
+    topics:
+    - "ABAC policies to centrally control row-level filtering and column masking for
+      sensitive data"
+    sources:
+    - sources/exam-guide.md
+    status: unwritten
